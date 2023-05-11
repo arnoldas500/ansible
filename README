@@ -1,0 +1,6 @@
+ansible playbooks for xCITE cluster
+
+First run $source /opt/deepops/env/bin/activate to be able to use ansible command
+
+to install packages on all nodes use playbook install_packages.yml and run with
+$ ansible-playbook -u arnoldas -b install_packages.yml
