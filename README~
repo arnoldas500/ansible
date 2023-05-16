@@ -1,0 +1,4 @@
+ansible playbooks for xCITE cluster
+
+to install packages on all nodes use playbook install_packages.yml and run with
+$ ansible-playbook -u arnoldas -b install_packages.yml

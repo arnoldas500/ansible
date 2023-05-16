@@ -2,5 +2,10 @@ ansible playbooks for xCITE cluster
 
 First run $source /opt/deepops/env/bin/activate to be able to use ansible command
 
+if get error: "Ansible provisioning ERROR! Using a SSH password instead of a key is not possible" add
+export ANSIBLE_HOST_KEY_CHECKING=False
+
 to install packages on all nodes use playbook install_packages.yml and run with
 $ ansible-playbook -u arnoldas -b install_packages.yml
+with sudo over ssh and sudo password on compute nodes:
+$ ansible-playbook -u arnoldas -b install_packages.yml -i /home/arnoldas/ansible/inventory -k -K -v

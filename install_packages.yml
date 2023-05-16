@@ -1,0 +1,9 @@
+---
+ - name: Playbook to install nano
+   hosts: all
+   become: true
+   tasks: 
+    - name: Ansible apt install nano
+      apt:
+        name: nano
+        state: present
