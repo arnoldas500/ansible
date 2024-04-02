@@ -9,15 +9,20 @@
 # NOTE: Use existing hostnames here, DeepOps will configure server hostnames to match these values
 ######
 [all]
+dcflash       ansible_host=10.114.0.147
 xcitemain    ansible_host=10.114.0.134
 dgx-a100     ansible_host=10.114.0.142
 leela        ansible_host=169.226.68.139
-#stellar      ansible_host=169.226.68.138
-hulk         ansible_host=10.114.0.146
-#xcitedb      ansible_host=10.114.0.133
-ceara	     ansible_host=169.226.68.135
-lambda	     ansible_host=169.226.68.140
-appsvr	     ansible_host=10.114.0.141
+stellar       ansible_host=169.226.68.138
+hulk          ansible_host=10.114.0.146
+xcitedb       ansible_host=10.114.0.133
+ceara        ansible_host=169.226.68.135
+lambda       ansible_host=169.226.68.140
+appsvr       ansible_host=10.114.0.141
+gh200        ansible_host=10.114.0.155
+gh201        ansible_host=10.114.0.154
+poseidon      ansible_host=169.226.68.144
+aether       ansible_host=169.226.68.145
 
 ######
 # KUBERNETES

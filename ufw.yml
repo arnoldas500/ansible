@@ -1,0 +1,76 @@
+---
+# UFW Configuration
+
+- name: My playbook
+  hosts: all
+  become: yes
+  tasks:
+  - name: Allow everything and enable UFW
+    community.general.ufw:
+      state: enabled
+
+  - name: Set logging
+    community.general.ufw:
+      logging: 'on'
+
+  - community.general.ufw:
+      rule: reject
+      port: auth
+      log: true
+
+  - community.general.ufw:
+      rule: limit
+      port: ssh
+      proto: tcp
+
+  - community.general.ufw:
+      rule: allow
+      name: OpenSSH
+
+  - name: Allow all access from xcite networks to this host
+    community.general.ufw:
+      rule: allow
+      src: '{{ item }}'
+    loop:
+      - 10.233.0.0/24
+      - 10.233.0.0/8
+      - 10.233.0.0/16
+      - 169.226.0.0/24
+      - 203.0.113.0/24
+      - 10.12.0.0/16
+      - 10.16.0.0/16
+      - 129.15.42.34
+      - 129.15.42.0/23
+
+  - name: allow access for dec, UL upload
+    community.general.ufw:
+      rule: allow
+      src: '{{ item }}'
+      port: '22'
+    loop:
+      - 173.233.79.128/26
+      - 173.233.90.0/27
+      - 64.72.84.99 
+      - 134.179.252.122
+
+  - name: allow access for dec, UL upload
+    community.general.ufw:
+      rule: allow
+      src: '{{ item }}'
+      port: '49152'
+    loop:
+      - 173.233.79.128/26
+      - 173.233.90.0/27
+      - 134.179.252.122
+
+  - name: allow access for dec, UL upload
+    community.general.ufw:
+      rule: allow
+      interface: bond1
+      direction: out
+
+  - name: allow access for dec, UL upload
+    community.general.ufw:
+      rule: allow
+      interface: bond1
+      direction: in
