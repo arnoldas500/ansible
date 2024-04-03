@@ -1,0 +1,7 @@
+- name: My playbook
+  hosts: all
+  become: yes
+  tasks:
+  - name: disable UFW
+    community.general.ufw:
+      state: disable

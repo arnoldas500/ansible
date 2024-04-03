@@ -5,9 +5,17 @@
   hosts: all
   become: yes
   tasks:
-  - name: Allow everything and enable UFW
+  - name: Allow outgoing and enable UFW
     community.general.ufw:
       state: enabled
+      direction: outgoing
+      policy: allow
+
+  - name: Incoming deny
+    community.general.ufw:
+      state: enabled
+      direction: incoming
+      policy: deny
 
   - name: Set logging
     community.general.ufw:
@@ -32,8 +40,8 @@
       rule: allow
       src: '{{ item }}'
     loop:
-      - 10.233.0.0/24
-      - 10.233.0.0/8
+      - 10.233.70.0/24
+      - 10.233.121.0/24
       - 10.233.0.0/16
       - 169.226.0.0/24
       - 203.0.113.0/24
@@ -41,6 +49,9 @@
       - 10.16.0.0/16
       - 129.15.42.34
       - 129.15.42.0/23
+      - 169.226.68.0/24
+      - 10.223.17.0/24
+      - 10.233.0.0/24
 
   - name: allow access for dec, UL upload
     community.general.ufw:
@@ -62,6 +73,11 @@
       - 173.233.79.128/26
       - 173.233.90.0/27
       - 134.179.252.122
+
+  - name: allow access for devtron
+    community.general.ufw:
+      rule: allow
+      src: 10.233.17.47
 
   - name: allow access for dec, UL upload
     community.general.ufw:
