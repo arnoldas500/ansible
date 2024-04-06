@@ -4,4 +4,4 @@
   tasks:
   - name: disable UFW
     community.general.ufw:
-      state: disabled
+      state: reset

@@ -1,0 +1,14 @@
+---
+# UFW Configuration
+
+- name: My playbook
+  hosts: all
+  become: yes
+  tasks:
+  - name: Allow outgoing and enable UFW
+    community.general.ufw:
+      state: enabled
+
+  - community.general.ufw:
+      delete: true
+      name: OpenSSH
