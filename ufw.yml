@@ -31,6 +31,12 @@
       port: ssh
       proto: tcp
 
+  - name: Delete OpenSSH rule
+    community.general.ufw:
+      rule: allow
+      name: OpenSSH
+      delete: true
+
   - community.general.ufw:
       rule: allow
       name: OpenSSH
@@ -61,7 +67,7 @@
       - 10.223.17.0/24
       - 10.233.0.0/24
 
-  - name: allow access for dec, UL upload
+  - name: allow access for dec, UL upload, chge
     community.general.ufw:
       rule: allow
       src: '{{ item }}'
@@ -72,7 +78,7 @@
       - 64.72.84.99 
       - 134.179.252.122
 
-  - name: allow access for dec, UL upload
+  - name: allow access for dec, UL upload, CHGE
     community.general.ufw:
       rule: allow
       src: '{{ item }}'
@@ -81,19 +87,20 @@
       - 173.233.79.128/26
       - 173.233.90.0/27
       - 134.179.252.122
+      - 64.72.84.99
 
   - name: allow access for devtron
     community.general.ufw:
       rule: allow
       src: 10.233.17.47
 
-  - name: allow access for dec, UL upload
+  - name: allow out access on bond1
     community.general.ufw:
       rule: allow
       interface: bond1
       direction: out
 
-  - name: allow access for dec, UL upload
+  - name: allow in access on bond1 
     community.general.ufw:
       rule: allow
       interface: bond1
